@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&display=swap'); 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-text-primary font-sans antialiased;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-primary text-background hover:bg-primary-dark transition-colors px-6 py-2 rounded-lg font-medium;
+  }
+
+  .btn-outline {
+    @apply border-2 border-primary text-primary hover:bg-primary/10 transition-colors px-6 py-2 rounded-lg font-medium;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-primary to-primary-dark;
+  }
+
+  .gradient-border {
+    @apply border-transparent bg-gradient-to-r from-primary to-primary-dark bg-clip-border;
+  }
+
+  .glass-effect {
+    @apply bg-white/5 backdrop-blur-lg border border-white/10;
+  }
+}
+
+@font-face {
+  font-family: 'Space Grotesk';
+  src: url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700&display=swap');
+}
+@keyframes gradient {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+.animate-gradient {
+  animation: gradient 10s ease infinite;
+}
+
+:root {
+  --primary-green: #00ff94;
+  --dark-bg: #0a0b0d;
+}
+
+body {
+  background-color: var(--dark-bg);
+  color: white;
+  font-family: 'Orbitron', sans-serif;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, #00ff94 0%, #00ff94 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-primary {
+  background: linear-gradient(90deg, rgba(0,255,148,0.15) 0%, rgba(0,255,148,0.05) 100%);
+  border: 1px solid var(--primary-green);
+  color: var(--primary-green);
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(90deg, rgba(0,255,148,0.25) 0%, rgba(0,255,148,0.15) 100%);
+}
+@keyframes slide-left-right {
+  0% {
+    transform: translateX(-100%);
+  }
+  50% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-line-horizontal {
+  animation: slide-left-right 6s linear infinite;
+}
+
+.animate-line-horizontal2 {
+  animation: slide-left-right 10s linear infinite reverse;
+}
+@keyframes moveLeftToRight {
+  0% { transform: translateX(-100vw); opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { transform: translateX(100vw); opacity: 0.2; }
+}
+
+@keyframes moveTopToBottom {
+  0% { transform: translateY(-100vh); opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(100vh); opacity: 0.2; }
+}
+
+@keyframes moveBottomToTop {
+  0% { transform: translateY(100vh); opacity: 0.2; }
+  50% { opacity: 0.5; }
+  100% { transform: translateY(-100vh); opacity: 0.2; }
+}
+
+.gradient-letter {
+  display: inline-block;
+  /* font-family: 'Cormorant Garamond', sans-serif; /* Move this outside */
+  font-weight: 900; /* Bold */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;;
+  background-image: linear-gradient(180deg, #25D695 0%, #046C44 100%);
+  /* background-image: linear-gradient(90deg, rgb(52, 152, 219) 0%, rgba(41, 128, 185, 0.7) 100%); */
+  
+
+}
+
+.gradient-letter-1 {
+  display: inline-block;
+  /* font-family: 'Cormorant Garamond', sans-serif; /* Move this outside */
+  font-weight: 900; /* Bold */
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;;
+  background-image: linear-gradient(180deg, #fff 0%, #878787 100%);
+  /* background-image: linear-gradient(90deg, rgb(52, 152, 219) 0%, rgba(41, 128, 185, 0.7) 100%); */
+}
+
+/* .gradient-letter {
+  background: linear-gradient(90deg, rgba(1,132,58,0.73) 0%, rgba(0,255,132,0.6) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+} */
+
+
+.bg-grid-green-gray {
+  background-image: 
+    linear-gradient(to right, rgba(0, 168, 107, 0.1) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(128, 128, 128, 0.1) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+.text-gradient-dark {
+  background-image: linear-gradient(90deg, #43e97b, #38f9d7);
+
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

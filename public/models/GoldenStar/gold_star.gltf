@@ -1,0 +1,429 @@
+{
+  "accessors": [
+    {
+      "bufferView": 1,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        11.386775970458984,
+        2.7922909259796143,
+        11.386775016784668
+      ],
+      "min": [
+        -11.386775016784668,
+        -2.7922909259796143,
+        -11.386775016784668
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 1536,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        0.9651948809623718,
+        0.8253448009490967,
+        0.9651891589164734
+      ],
+      "min": [
+        -0.9651892185211182,
+        -0.8253448009490967,
+        -0.9651892185211182
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "componentType": 5125,
+      "count": 192,
+      "type": "SCALAR"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 3072,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        11.386775970458984,
+        2.7922909259796143,
+        11.386775016784668
+      ],
+      "min": [
+        -11.386775016784668,
+        -2.7922909259796143,
+        -11.386775016784668
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 1,
+      "byteOffset": 4608,
+      "componentType": 5126,
+      "count": 128,
+      "max": [
+        0.9651948809623718,
+        0.8253448009490967,
+        0.9651891589164734
+      ],
+      "min": [
+        -0.9651892185211182,
+        -0.8253448009490967,
+        -0.9651892185211182
+      ],
+      "type": "VEC3"
+    },
+    {
+      "bufferView": 0,
+      "byteOffset": 768,
+      "componentType": 5125,
+      "count": 192,
+      "type": "SCALAR"
+    }
+  ],
+  "asset": {
+    "extras": {
+      "author": "alex.yefremov (https://sketchfab.com/alex.yefremov)",
+      "license": "CC-BY-4.0 (http://creativecommons.org/licenses/by/4.0/)",
+      "source": "https://sketchfab.com/3d-models/gold-star-4fbc2f5d77e74614a8fb1cee5b439077",
+      "title": "Gold star"
+    },
+    "generator": "Sketchfab-14.77.0",
+    "version": "2.0"
+  },
+  "bufferViews": [
+    {
+      "buffer": 0,
+      "byteLength": 1536,
+      "name": "floatBufferViews",
+      "target": 34963,
+      "byteOffset": 0
+    },
+    {
+      "buffer": 0,
+      "byteLength": 6144,
+      "byteOffset": 1536,
+      "byteStride": 12,
+      "name": "floatBufferViews",
+      "target": 34962
+    }
+  ],
+  "buffers": [
+    {
+      "uri": "gold_star_data.bin",
+      "byteLength": 7680
+    }
+  ],
+  "materials": [
+    {
+      "doubleSided": true,
+      "name": "lambert1",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          1,
+          0.5978448804492563,
+          0,
+          1
+        ],
+        "roughnessFactor": 0.2057142857142857
+      }
+    },
+    {
+      "doubleSided": true,
+      "name": "lambert2",
+      "pbrMetallicRoughness": {
+        "baseColorFactor": [
+          0.8014945267390895,
+          0.8014945267390895,
+          0.8014945267390895,
+          1
+        ],
+        "roughnessFactor": 0.2118095238095238
+      }
+    }
+  ],
+  "meshes": [
+    {
+      "name": "pCylinder3_lambert2_1_lambert1_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 1,
+            "POSITION": 0
+          },
+          "indices": 2,
+          "material": 0,
+          "mode": 4
+        }
+      ]
+    },
+    {
+      "name": "pCylinder3_lambert2_2_lambert2_0",
+      "primitives": [
+        {
+          "attributes": {
+            "NORMAL": 4,
+            "POSITION": 3
+          },
+          "indices": 5,
+          "material": 1,
+          "mode": 4
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "children": [
+        1
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.220446049250313e-16,
+        -1,
+        0,
+        0,
+        1,
+        2.220446049250313e-16,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Sketchfab_model"
+    },
+    {
+      "children": [
+        2
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0.009999999776482582,
+        0,
+        0,
+        -0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "2700108a4f0f452f885ea19379a7f23d.fbx"
+    },
+    {
+      "children": [
+        3
+      ],
+      "name": "RootNode"
+    },
+    {
+      "children": [
+        4
+      ],
+      "name": "Christmas_tree_star:scene"
+    },
+    {
+      "children": [
+        5
+      ],
+      "matrix": [
+        100,
+        0,
+        0,
+        0,
+        0,
+        100,
+        0,
+        0,
+        0,
+        0,
+        100,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Christmas_tree_star:Meshes"
+    },
+    {
+      "children": [
+        6
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        2.220446049250313e-16,
+        -1,
+        0,
+        0,
+        1,
+        2.220446049250313e-16,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Christmas_tree_star:Sketchfab_model"
+    },
+    {
+      "children": [
+        7
+      ],
+      "matrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        2.2204459996194763e-18,
+        0.009999999776482582,
+        0,
+        0,
+        -0.009999999776482582,
+        2.2204459996194763e-18,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Christmas_tree_star:_9b7110cf2b244eeaf15ba96a2dae5f6_fbx"
+    },
+    {
+      "children": [
+        8
+      ],
+      "name": "Christmas_tree_star:RootNode"
+    },
+    {
+      "children": [
+        9
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        -2.220446049250313e-16,
+        1,
+        0,
+        0,
+        -1,
+        -2.220446049250313e-16,
+        0,
+        0,
+        17.594970703125,
+        7.198751177384111e-7,
+        1
+      ],
+      "name": "Christmas_tree_star:pCylinder3"
+    },
+    {
+      "children": [
+        10,
+        12
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        1,
+        -4.930380657631325e-32,
+        0,
+        0,
+        4.930380657631325e-32,
+        1,
+        0,
+        0,
+        0,
+        0,
+        1
+      ],
+      "name": "Christmas_tree_star:pCylinder3_lambert2_0"
+    },
+    {
+      "children": [
+        11
+      ],
+      "matrix": [
+        1,
+        0,
+        0,
+        0,
+        0,
+        -1.5001938171674842e-16,
+        -0.6756272315979004,
+        0,
+        0,
+        1,
+        -2.220446049250313e-16,
+        0,
+        134.7046356201172,
+        3.804898257087682e-15,
+        17.13573455810547,
+        1
+      ],
+      "name": "pCylinder3_lambert2_1"
+    },
+    {
+      "mesh": 0,
+      "name": "pCylinder3_lambert2_1_lambert1_0"
+    },
+    {
+      "children": [
+        13
+      ],
+      "matrix": [
+        0.9280232848099379,
+        0.37252219108473655,
+        -5.551115123125783e-17,
+        0,
+        -2.2502907257512263e-16,
+        4.500581451502453e-16,
+        -0.6756272315979004,
+        0,
+        -0.37252219108473655,
+        0.9280232848099379,
+        7.771561172376096e-16,
+        0,
+        134.7046356201172,
+        3.804898257087682e-15,
+        17.13573455810547,
+        1
+      ],
+      "name": "pCylinder3_lambert2_2"
+    },
+    {
+      "mesh": 1,
+      "name": "pCylinder3_lambert2_2_lambert2_0"
+    }
+  ],
+  "scene": 0,
+  "scenes": [
+    {
+      "name": "Sketchfab_Scene",
+      "nodes": [
+        0
+      ]
+    }
+  ]
+}
