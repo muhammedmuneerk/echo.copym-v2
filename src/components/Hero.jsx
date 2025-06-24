@@ -55,16 +55,16 @@ export default function Hero() {
                 {/* Large/Medium Screens: Full lines */}
                 <Box component="div" className="hidden md:block">
                   <GradientLetters
-                    text="One Platform. All Chains."
+                    text="One Platform - All Chains"
                     keyPrefix="line1-lg"
-                    className="gradient-letter-1"
+                    className="gradient-letter-2"
                   />
                 </Box>
                 <Box component="div" className="hidden md:block mt-1">
                   <GradientLetters
-                    text="No Barriers."
+                    text="- No Barriers"
                     keyPrefix="line2-char"
-                    className="gradient-letter-1"
+                    className="gradient-letter-2"
                   />
                 </Box>
 
