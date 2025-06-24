@@ -18,13 +18,13 @@ export default function Hero() {
   const handleAction = () => {};
 
   return (
-    <Box 
+    <Box
       className="min-h-screen relative overflow-hidden"
       sx={{
-        backgroundImage: 'url(/assets/sections/rwa-hero-bg.png)',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
+        backgroundImage: "url(/assets/sections/rwa-hero-bg.png)",
+        backgroundSize: "cover",
+        backgroundPosition: "center",
+        backgroundRepeat: "no-repeat",
       }}
     >
       {/* Overlay gradient for better text readability */}
@@ -55,14 +55,14 @@ export default function Hero() {
                 {/* Large/Medium Screens: Full lines */}
                 <Box component="div" className="hidden md:block">
                   <GradientLetters
-                    text="The Complete Ecosystem"
+                    text="One Platform. All Chains."
                     keyPrefix="line1-lg"
                     className="gradient-letter-1"
                   />
                 </Box>
                 <Box component="div" className="hidden md:block mt-1">
                   <GradientLetters
-                    text="for Real World Asset Tokenization"
+                    text="No Barriers."
                     keyPrefix="line2-char"
                     className="gradient-letter-1"
                   />
@@ -107,7 +107,11 @@ export default function Hero() {
                   />
                 </Box>
                 <Box component="div" className="block sm:hidden">
-                  <GradientLetters text="Tokenization" keyPrefix="line1-sm-3" className="gradient-letter-1" />
+                  <GradientLetters
+                    text="Tokenization"
+                    keyPrefix="line1-sm-3"
+                    className="gradient-letter-1"
+                  />
                 </Box>
               </Typography>
 
@@ -116,30 +120,27 @@ export default function Hero() {
                 variant="body1"
                 className="text-text-secondary mb-8 sm:mb-10 md:mb-12 max-w-xs sm:max-w-lg md:max-w-2xl lg:max-w-3xl mx-auto text-base sm:text-lg text-white/80"
               >
-                One unified platform for tokenizing, managing, and trading any
-                real-world asset class. Access all the tools, networks, and
-                liquidity you need in a single ecosystem.
+                From issuance to AI-driven investing — Copym unlocks real-world
+                asset tokenization for everyone, with no gas, no fees, and no
+                limits.
               </Typography>
 
               {/* Responsive button container with improved spacing */}
               <div className="flex justify-center px-4 sm:px-0">
                 <div className="md:flex lg:flex-row gap-3 sm:gap-4">
-                 
-                    <div className="my-3">
-                      <CustomButton
-                        label="Explore Asset Tokenization"
-                        onClick={handleExplore}
-                      />
-                    </div>
-                 
+                  <div className="my-3">
+                    <CustomButton
+                      label="Explore Asset Tokenization"
+                      onClick={handleExplore}
+                    />
+                  </div>
 
-                    <div className="my-3">
-                      <CustomButton
-                        label="Start Tokenizing Now"
-                        onClick={() => handleAction()}
-                      />
-                    </div>
-                 
+                  <div className="my-3">
+                    <CustomButton
+                      label="Start Tokenizing Now"
+                      onClick={() => handleAction()}
+                    />
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -161,11 +162,14 @@ export default function Hero() {
               variant="button"
               className="text-white flex flex-col items-center cursor-pointer text-sm sm:text-base"
               onClick={() => {
-                const target = document.getElementById('main-content');
+                const target = document.getElementById("main-content");
                 if (target) {
-                  target.scrollIntoView({ behavior: 'smooth' });
+                  target.scrollIntoView({ behavior: "smooth" });
                 } else {
-                  window.scrollTo({ top: window.innerHeight * 1.1, behavior: 'smooth' });
+                  window.scrollTo({
+                    top: window.innerHeight * 1.1,
+                    behavior: "smooth",
+                  });
                 }
               }}
             >

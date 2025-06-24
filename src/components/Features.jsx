@@ -9,9 +9,9 @@ import AnimatedCard from "../ui/AnimatedCard.jsx";
 // Modified features array
 const features = [
   {
-    title: "Cross-Chain Infrastructure",
+    title: "Chain-Agnostic Tokenization",
     description:
-      "Seamlessly bridge assets across all major blockchains through our unified interface.",
+      "Chain-Agnostic Tokenization	Mint on any chain — Ethereum, Solana, Polygon, Optimism, Cardano, and more. No native token required.",
     icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-globe text-gray-400">
       <circle cx="12" cy="12" r="10"></circle>
       <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path>
@@ -19,17 +19,17 @@ const features = [
     </svg>
   },
   {
-    title: "Comprehensive Compliance",
+    title: "Zero-Fee Experience",
     description:
-      "Built-in KYC/AML, regulatory frameworks, and automated compliance across jurisdictions.",
+      "No gas fees. No platform charges. Simple, transparent, and cost-free at every step.",
     icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-shield text-gray-400">
       <path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C14.51 3.81 17 5 19 5a1 1 0 0 1 1 1z"></path>
     </svg>,
   },
   {
-    title: "Fractional Ownership",
+    title: "Smart Compliance & Identity",
     description:
-      "Divide assets into tradable fractions, democratizing access to previously exclusive investments.",
+      "DID-powered onboarding, SBT-based credentials, and pre-audited contracts with jurisdictional flexibility.",
     icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-layers text-gray-400">
       <path d="M12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83z"></path>
       <path d="M2 12a1 1 0 0 0 .58.91l8.6 3.91a2 2 0 0 0 1.65 0l8.58-3.9A1 1 0 0 0 22 12"></path>
@@ -37,18 +37,18 @@ const features = [
     </svg>,
   },
   {
-    title: "Complete Wallet Ecosystem",
+    title: "AI Portfolio Intelligence",
     description:
-      "Support for custodial, non-custodial, MPC, and hardware wallet solutions.",
+      "Let Copym’s AI suggest diversified, high-yield portfolios tailored to your goals.",
     icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-wallet text-gray-400">
       <path d="M19 7V4a1 1 0 0 0-1-1H5a2 2 0 0 0 0 4h15a1 1 0 0 1 1 1v4h-3a2 2 0 0 0 0 4h3a1 1 0 0 0 1-1v-2a1 1 0 0 0-1-1"></path>
       <path d="M3 5v14a2 2 0 0 0 2 2h15a1 1 0 0 0 1-1v-4"></path>
     </svg>,
   },
   {
-    title: "End-to-End Marketplace",
+    title: "Liquidity on Your Terms",
     description:
-      "Primary issuance, secondary trading, liquidity pools, and OTC services all in one place.",
+      "Trade anytime on our secondary market. No lock-in. Full control. Best-in-class real-world inventory.",
     icon: <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-blocks text-gray-400">
       <rect width="7" height="7" x="14" y="3" rx="1"></rect>
       <path d="M10 21V8a1 1 0 0 0-1-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-5a1 1 0 0 0-1-1H3"></path>
@@ -186,7 +186,7 @@ export default function Features() {
                     </Typography>
                     <Button
                       endIcon={<ArrowForward />}
-                      className="text-primary hover:bg-primary/5 px-0"
+                      className="text-primary hover:bg-primary/5 px-0 pb-0 mb-0"
                     >
                       Learn more
                     </Button>
