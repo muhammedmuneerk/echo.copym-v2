@@ -15,7 +15,7 @@ export default function Hero() {
   const handleExplore = () => navigate("/tokenization");
 
   // Placeholder for other actions (kept to avoid reference errors)
-  const handleAction = () => {};
+  const handleAction = () => navigate("/marketplace");
 
   return (
     <Box
@@ -130,14 +130,14 @@ export default function Hero() {
                 <div className="md:flex lg:flex-row gap-3 sm:gap-4">
                   <div className="my-3">
                     <CustomButton
-                      label="Explore Asset Tokenization"
+                      label="Bring It On-Chain"
                       onClick={handleExplore}
                     />
                   </div>
 
                   <div className="my-3">
                     <CustomButton
-                      label="Start Tokenizing Now"
+                      label="Explore High-Yield Assets"
                       onClick={() => handleAction()}
                     />
                   </div>

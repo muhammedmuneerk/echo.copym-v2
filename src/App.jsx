@@ -72,7 +72,7 @@ function HomePage() {
       </motion.section>
 
       {/* Background pattern that sits above hero but below all other content */}
-      <BackgroundPattern />
+      {/* <BackgroundPattern /> */}
 
       {/* All other homepage sections */}
       <div
