@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import {
   AppBar,
@@ -80,6 +80,22 @@ const logoVariants = {
   hover: { scale: 1.05, transition: { duration: 0.2 } }
 };
 
+// Base nav button styles (no circle until hover)
+const baseDesktopNavButtonStyles = {
+  position: "relative",
+  borderRadius: "8px",
+  transition: "color 0.2s ease",
+  "&:hover": {
+    backgroundColor: "rgba(255, 255, 255, 0.05)",
+    color: "primary.main",
+  },
+};
+
+// Additional styles to apply when the nav item is active (shows the circle even without hover)
+const activeDesktopNavButtonStyles = {
+  color: "primary.main",
+};
+
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [menuAnchor, setMenuAnchor] = useState(null);
@@ -90,9 +106,29 @@ export default function Navbar() {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down("lg"));
   const hamburgerRef = useRef(null);
+  // Refs and state for moving underline indicator (desktop)
+  const navContainerRef = useRef(null);
+  const navItemRefs = useRef([]); // array of DOM nodes
+  const [indicatorProps, setIndicatorProps] = useState({ left: 0, width: 0 });
   
   // Check if current page is homepage
   const isHomePage = location.pathname === "/";
+
+  // Filter navigation items to remove Home button on homepage (must be declared before effects)
+  const filteredNavigationItems = navigationItems.filter(
+    (item) => !(item.label === "Home" && isHomePage)
+  );
+
+  // Callback to move the underline indicator (declared early so effects can reference it)
+  const updateIndicator = useCallback((el) => {
+    if (!el || !navContainerRef.current) return;
+    const containerRect = navContainerRef.current.getBoundingClientRect();
+    const itemRect = el.getBoundingClientRect();
+    setIndicatorProps({
+      left: itemRect.left - containerRect.left,
+      width: itemRect.width,
+    });
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -107,6 +143,35 @@ export default function Navbar() {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location]);
+
+  // Determine active nav index based on current route and update indicator
+  useEffect(() => {
+    const activeIndex = filteredNavigationItems.findIndex(
+      (itm) => itm.to && itm.to === location.pathname
+    );
+    if (activeIndex !== -1) {
+      const activeEl = navItemRefs.current[activeIndex];
+      updateIndicator(activeEl);
+    } else {
+      // hide indicator when no active match
+      setIndicatorProps({ left: 0, width: 0 });
+    }
+  }, [location.pathname, updateIndicator]);
+
+  // Update indicator on window resize to keep alignment
+  useEffect(() => {
+    const handleResize = () => {
+      // try to align with currently stored left by re-evaluating element under same index (approx)
+      const activeIndex = filteredNavigationItems.findIndex(
+        (itm) => itm.to && itm.to === location.pathname
+      );
+      if (activeIndex !== -1) {
+        updateIndicator(navItemRefs.current[activeIndex]);
+      }
+    };
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [location.pathname, updateIndicator]);
 
   const handleMenuOpen = (event, label) => {
     setMenuAnchor(event.currentTarget);
@@ -138,11 +203,6 @@ export default function Navbar() {
     setMobileMenuOpen(false);
     document.body.style.overflow = "auto";
   };
-
-  // Filter navigation items to remove Home button on homepage
-  const filteredNavigationItems = navigationItems.filter(item => 
-    !(item.label === "Home" && isHomePage)
-  );
 
   return (
     <>
@@ -183,7 +243,33 @@ export default function Navbar() {
             </motion.div>
 
             {/* Desktop Navigation - On the right */}
-            <Box className="hidden lg:flex items-center space-x-1 ml-auto">
+            <Box
+              ref={navContainerRef}
+              className="hidden lg:flex items-center space-x-1 ml-auto relative"
+              onMouseLeave={() => {
+                // revert to active route
+                const activeIndex = filteredNavigationItems.findIndex(
+                  (itm) => itm.to && itm.to === location.pathname
+                );
+                if (activeIndex !== -1) {
+                  updateIndicator(navItemRefs.current[activeIndex]);
+                } else {
+                  setIndicatorProps({ left: 0, width: 0 });
+                }
+              }}
+            >
+              {/* moving underline indicator */}
+              <Box
+                sx={{
+                  position: "absolute",
+                  bottom: 0,
+                  left: indicatorProps.left,
+                  width: indicatorProps.width,
+                  height: "2px",
+                  backgroundColor: "primary.main",
+                  transition: "left 0.35s ease, width 0.35s ease",
+                }}
+              />
               {filteredNavigationItems.map((item, index) => (
                 <motion.div
                   key={item.label}
@@ -209,12 +295,13 @@ export default function Navbar() {
                           </motion.div>
                         }
                         className="text-text-secondary hover:text-white px-4 py-2"
-                        sx={{
-                          borderRadius: "8px",
-                          "&:hover": {
-                            backgroundColor: "rgba(255, 255, 255, 0.05)",
-                          },
-                        }}
+                        sx={
+                          item.to && item.to === location.pathname
+                            ? { ...baseDesktopNavButtonStyles, ...activeDesktopNavButtonStyles }
+                            : baseDesktopNavButtonStyles
+                        }
+                        ref={(el) => (navItemRefs.current[index] = el)}
+                        onMouseEnter={() => updateIndicator(navItemRefs.current[index])}
                       >
                         <span className="mr-2">{item.icon}</span>
                         {item.label}
@@ -279,26 +366,13 @@ export default function Navbar() {
                       onClick={() => navigate(item.to)}
                       color="inherit"
                       className="text-text-secondary hover:text-white px-4 py-2"
-                      sx={{
-                        borderRadius: "8px",
-                        "&:hover": {
-                          backgroundColor: "rgba(255, 255, 255, 0.05)",
-                        },
-                        "&::after": {
-                          content: '""',
-                          position: "absolute",
-                          bottom: 0,
-                          left: "50%",
-                          width: "0%",
-                          height: "2px",
-                          backgroundColor: "primary.main",
-                          transition: "width 0.3s ease-in-out, left 0.3s ease-in-out",
-                        },
-                        "&:hover::after": {
-                          width: "80%",
-                          left: "10%",
-                        },
-                      }}
+                      sx={
+                        item.to && item.to === location.pathname
+                          ? { ...baseDesktopNavButtonStyles, ...activeDesktopNavButtonStyles }
+                          : baseDesktopNavButtonStyles
+                      }
+                      ref={(el) => (navItemRefs.current[index] = el)}
+                      onMouseEnter={() => updateIndicator(navItemRefs.current[index])}
                     >
                       <span className="mr-2">{item.icon}</span>
                       {item.label}
@@ -307,12 +381,13 @@ export default function Navbar() {
                     <Button
                       color="inherit"
                       className="text-text-secondary hover:text-white px-4 py-2"
-                      sx={{
-                        borderRadius: "8px",
-                        "&:hover": {
-                          backgroundColor: "rgba(255, 255, 255, 0.05)",
-                        },
-                      }}
+                      sx={
+                        item.to && item.to === location.pathname
+                          ? { ...baseDesktopNavButtonStyles, ...activeDesktopNavButtonStyles }
+                          : baseDesktopNavButtonStyles
+                      }
+                      ref={(el) => (navItemRefs.current[index] = el)}
+                      onMouseEnter={() => updateIndicator(navItemRefs.current[index])}
                     >
                       <span className="mr-2">{item.icon}</span>
                       {item.label}
