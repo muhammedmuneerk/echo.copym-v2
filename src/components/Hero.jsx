@@ -21,10 +21,10 @@ export default function Hero() {
     <Box
       className="min-h-screen relative overflow-hidden"
       sx={{
-        backgroundImage: "url(/assets/sections/rwa-hero-bg.png)",
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-        backgroundRepeat: "no-repeat",
+        backgroundImage: "url('/assets/sections/rwa-hero-bg.png')",
+        backgroundSize: 'cover',
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
       }}
     >
       {/* Overlay gradient for better text readability */}

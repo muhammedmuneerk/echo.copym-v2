@@ -3,6 +3,10 @@ import { Box } from "@mui/material";
 import { Routes, Route } from "react-router-dom";
 import { animate } from 'animejs';
 import { motion, useScroll, useTransform } from "framer-motion";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(ScrollTrigger);
 import Navbar from "./components/Navbar";
 import Features from "./components/Features";
 import Hero from "./components/Hero";
@@ -136,6 +140,7 @@ function HomePage() {
 function App() {
   const [showSplash, setShowSplash] = useState(true);
   const appRef = useRef(null);
+  const videoRef = useRef(null);
 
   // Handle splash screen timing
   useEffect(() => {
@@ -167,6 +172,54 @@ function App() {
     }
   }, [showSplash]);
 
+  // ScrollTrigger for video background
+  useEffect(() => {
+    if (showSplash) return; // wait until splash is gone
+
+    const video = videoRef.current;
+    if (!video) return;
+
+    const onReady = () => {
+      if (!video.duration || isNaN(video.duration)) return;
+
+      // Object whose property we'll animate. This gives GSAP full control over easing & frame-rate.
+      const scrubObj = { time: 0 };
+
+      // Kill any existing ScrollTriggers tied to this video to prevent duplicates.
+      ScrollTrigger.getAll().forEach(t => t.kill());
+
+      // GSAP tween that maps scroll progress to video currentTime
+      gsap.to(scrubObj, {
+        time: video.duration,
+        ease: "none", // linear mapping
+        onUpdate: () => {
+          // Only set currentTime if it's different to avoid redundant paints.
+          if (Math.abs(video.currentTime - scrubObj.time) > 0.033) {
+            video.currentTime = scrubObj.time;
+          }
+        },
+        scrollTrigger: {
+          trigger: document.documentElement,
+          start: "top top",
+          end: "bottom bottom",
+          scrub: 0, // NO delay – keeps video perfectly synced
+          invalidateOnRefresh: true, // recalc on resize/refresh
+        },
+      });
+    };
+
+    // If metadata already loaded use it immediately, otherwise wait.
+    if (video.readyState >= 1) {
+      onReady();
+    } else {
+      video.addEventListener("loadedmetadata", onReady, { once: true });
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach(t => t.kill());
+    };
+  }, [showSplash]);
+
   // Show splash screen during initial load
   //if (showSplash) {
    // return <SplashScreen />;
@@ -175,11 +228,25 @@ function App() {
   return (
     <Box 
       ref={appRef} 
-      className="min-h-screen bg-custom-gradient text-text-primary overflow-x-hidden"
+      className="min-h-screen relative text-text-primary overflow-x-hidden"
     >
+      {/* Background Video for entire app */}
+      <video
+        ref={videoRef}
+        className="fixed inset-0 w-full h-full object-cover z-0"
+        muted
+        playsInline
+        preload="metadata"
+      >
+        <source src="/assets/bg-video-4k.mp4" type="video/mp4" />
+      </video>
+      
+      {/* Overlay gradient for better readability */}
+      <div className="fixed inset-0 bg-black/20 z-10"></div>
+      
       <ScrollToTop />
       <Navbar />
-      <main className="overflow-x-hidden">
+      <main className="relative z-20 overflow-x-hidden">
         <Routes>
           <Route path="/" element={<HomePage />} />
           <Route path="/marketplace" element={<Marketplace />} />
